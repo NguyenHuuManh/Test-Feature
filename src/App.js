@@ -1,7 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import SingleThread from "./components/SingleThread";
+import MultiThread from "./components/MultiThread";
+import SharedMemory from "./components/SharedMemory";
+import { useEffect } from "react";
+import { getAllCookie, getCookie, setCookie } from "./helper";
 
 function App() {
+  useEffect(() => {
+    setCookie("testCookie", "giá trị test", 1);
+    getAllCookie();
+    const cookei = getCookie("testCookie");
+    console.log(cookei, "====cookei======");
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +29,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <SingleThread />
+      <MultiThread />
+      <SharedMemory />
     </div>
   );
 }
